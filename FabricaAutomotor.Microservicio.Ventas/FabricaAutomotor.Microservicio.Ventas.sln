@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ventas.IDataProvider", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ventas.DataProvider", "..\Ventas.DataProvider\Ventas.DataProvider.csproj", "{5B4EFF40-633D-4EDA-90D6-78551D92ADE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ventas.Repository", "..\Ventas.Repository\Ventas.Repository.csproj", "{121A675C-D2B7-4863-AE1F-4A411173CBE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ventas.Repository", "..\Ventas.Repository\Ventas.Repository.csproj", "{A9F2FE0B-7EF8-443E-89B8-1C0CCD2EB9CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{5B4EFF40-633D-4EDA-90D6-78551D92ADE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B4EFF40-633D-4EDA-90D6-78551D92ADE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B4EFF40-633D-4EDA-90D6-78551D92ADE3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{121A675C-D2B7-4863-AE1F-4A411173CBE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{121A675C-D2B7-4863-AE1F-4A411173CBE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{121A675C-D2B7-4863-AE1F-4A411173CBE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{121A675C-D2B7-4863-AE1F-4A411173CBE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9F2FE0B-7EF8-443E-89B8-1C0CCD2EB9CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F2FE0B-7EF8-443E-89B8-1C0CCD2EB9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F2FE0B-7EF8-443E-89B8-1C0CCD2EB9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F2FE0B-7EF8-443E-89B8-1C0CCD2EB9CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

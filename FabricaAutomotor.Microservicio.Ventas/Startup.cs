@@ -1,14 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using FabricaAutomotor.Microservicio.Ventas.DataProvider;
+using FabricaAutomotor.Microservicio.Ventas.Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using FabricaAutomotor.Microservicio.Ventas.API.Services;
+using FabricaAutomotor.Microservicio.Ventas.Domain.Repositories;
+using FabricaAutomotor.Microservicio.Ventas.Repository;
+using Microsoft.OpenApi.Models;
+using System;
 
 namespace FabricaAutomotor.Microservicio.Ventas
 {
@@ -25,6 +26,12 @@ namespace FabricaAutomotor.Microservicio.Ventas
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddTransient<ISaleService, SaleService>();
+            services.AddTransient<IRepository, Repository.Repository>();
+            services.AddTransient<IDataProvider.IDataProvider, MockedDataProvider>();
+
+            AddSwagger(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +42,14 @@ namespace FabricaAutomotor.Microservicio.Ventas
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+            });
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -42,6 +57,26 @@ namespace FabricaAutomotor.Microservicio.Ventas
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+        }
+        private void AddSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                var groupName = "v1";
+
+                options.SwaggerDoc(groupName, new OpenApiInfo
+                {
+                    Title = $"Foo {groupName}",
+                    Version = groupName,
+                    Description = "Foo API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Foo Company",
+                        Email = string.Empty,
+                        Url = new Uri("https://foo.com/"),
+                    }
+                });
             });
         }
     }

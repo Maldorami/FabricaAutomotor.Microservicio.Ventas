@@ -10,8 +10,8 @@ namespace FabricaAutomotor.Microservicio.Ventas.API.Factories
         {
             return new SaleData()
             {
-                StoreID = saleRequest.StoreID,
-                ItemID = saleRequest.ItemID
+                StoreID = Convert.ToDecimal(saleRequest.StoreID),
+                ItemID = Convert.ToDecimal(saleRequest.ItemID)
             };
         }
     }

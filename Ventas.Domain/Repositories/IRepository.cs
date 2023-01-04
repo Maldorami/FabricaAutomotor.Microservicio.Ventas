@@ -6,6 +6,6 @@ namespace FabricaAutomotor.Microservicio.Ventas.Domain.Repositories
 {
     public interface IRepository
     {
-
+        public void InsertSale(SaleData saleData);
     }
 }

@@ -5,8 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ventas.DataProvider\Ventas.DataProvider.csproj" />
     <ProjectReference Include="..\Ventas.Domain\Ventas.Domain.csproj" />
+    <ProjectReference Include="..\Ventas.IDataProvider\Ventas.IDataProvider.csproj" />
     <ProjectReference Include="..\Ventas.Models\Ventas.Models.csproj" />
+    <ProjectReference Include="..\Ventas.Repository\Ventas.Repository.csproj" />
   </ItemGroup>
 
 
