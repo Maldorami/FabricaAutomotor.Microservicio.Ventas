@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FabricaAutomotor.Microservicio.Ventas.Domain
+namespace FabricaAutomotor.Microservicio.Ventas.Models
 {
     public class SaleData
     {

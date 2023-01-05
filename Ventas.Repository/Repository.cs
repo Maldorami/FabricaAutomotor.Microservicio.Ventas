@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
-using FabricaAutomotor.Microservicio.Ventas.Domain;
+﻿using System;
+using System.Collections.Generic;
 using FabricaAutomotor.Microservicio.Ventas.Domain.Repositories;
+using FabricaAutomotor.Microservicio.Ventas.Models;
+using FabricaAutomotor.Microservicio.Ventas.Models.Response;
 
 namespace FabricaAutomotor.Microservicio.Ventas.Repository
 {
@@ -19,6 +21,21 @@ namespace FabricaAutomotor.Microservicio.Ventas.Repository
             saleData.Price = CalculePrice(saleData.ItemID);
 
             _dataProvider.InsertSale(saleData);
+        }
+
+        public decimal GetTotalSalesCount()
+        {
+            return _dataProvider.GetTotalSalesCount();
+        }
+
+        public decimal GetTotalSalesCountFromStore(decimal storeID)
+        {
+            return _dataProvider.GetTotalSalesCountFromStore(storeID);
+        }
+
+        public List<ItemSoldPercentageByStoreResponse> GetItemSalePercentageByStore()
+        {
+            return _dataProvider.GetItemSalePercentageByStore();
         }
 
         private float CalculePrice(decimal ItemID)

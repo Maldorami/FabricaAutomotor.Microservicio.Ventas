@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
-using FabricaAutomotor.Microservicio.Ventas.Domain;
+using FabricaAutomotor.Microservicio.Ventas.Models;
+using FabricaAutomotor.Microservicio.Ventas.Models.Response;
 
 namespace FabricaAutomotor.Microservicio.Ventas.DataProvider
 {
@@ -10,17 +13,17 @@ namespace FabricaAutomotor.Microservicio.Ventas.DataProvider
         private List<ItemData> _itemDataList;
         private List<FeeData> _feeDataList;
 
-        private readonly static List<SaleData> _saleDataList = new List<SaleData>();
-        public static List<SaleData> SaleDataList 
+        private readonly static ConcurrentBag<SaleData> _saleDataList = new ConcurrentBag<SaleData>();
+        public static ConcurrentBag<SaleData> SaleDataList 
         {
             get
             {
                 if(_saleDataList == null)
                 {
-                    return new List<SaleData>();
+                    return new ConcurrentBag<SaleData>();
                 }
 
-                return SaleDataList;
+                return _saleDataList;
             } 
         }
 
@@ -47,6 +50,44 @@ namespace FabricaAutomotor.Microservicio.Ventas.DataProvider
                 new FeeData() { ID = 1, ItemID = 4, Percentage = 7}
             };
         }
+        public void InsertSale(SaleData saleData)
+        {
+            SaleDataList.Add(saleData);
+        }
+
+        public decimal GetTotalSalesCount()
+        {
+            return SaleDataList.Count();
+        }
+
+        public decimal GetTotalSalesCountFromStore(decimal storeID)
+        {
+            return SaleDataList.Where(x => x.StoreID == storeID).Count();
+        }
+
+        public List<ItemSoldPercentageByStoreResponse> GetItemSalePercentageByStore()
+        {
+            var result = new List<ItemSoldPercentageByStoreResponse>();
+
+            foreach (var storeSales in SaleDataList.OrderBy(x => x.StoreID).GroupBy(x => x.StoreID))
+            {
+                var store = new ItemSoldPercentageByStoreResponse();
+                store.StoreName = _storeDataList.Where(x => x.ID == storeSales.Key).FirstOrDefault().Name;
+
+                var itemListPercentage = new Dictionary<string, string>();
+
+                foreach (var sales in storeSales.OrderBy(x => x.ItemID).GroupBy(x => x.ItemID))
+                {
+                    var itemPerc = sales.Count() * 100 / GetTotalSalesCount();
+                    itemListPercentage.Add(_itemDataList.Where(x=> x.ID == sales.Key).FirstOrDefault().Description, 
+                                                itemPerc.ToString("0.00") + '%');
+                }
+                store.SalesPercentageOverTotal = itemListPercentage;
+                result.Add(store);
+            }
+
+            return result;
+        }
         public List<int> GetItemFees(decimal ItemID)
         {
             return _feeDataList.Where(x => x.ItemID == ItemID).Select(x => x.Percentage).ToList();
@@ -55,11 +96,6 @@ namespace FabricaAutomotor.Microservicio.Ventas.DataProvider
         public float GetItemPrice(decimal ItemID)
         {
             return _itemDataList.Where(x => x.ID == ItemID).Select(x => x.Price).FirstOrDefault();
-        }
-
-        public void InsertSale(SaleData saleData)
-        {
-            _saleDataList.Add(saleData);
         }
     }
 }

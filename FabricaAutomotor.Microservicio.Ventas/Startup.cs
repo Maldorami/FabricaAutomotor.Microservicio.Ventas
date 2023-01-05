@@ -10,6 +10,8 @@ using FabricaAutomotor.Microservicio.Ventas.Domain.Repositories;
 using FabricaAutomotor.Microservicio.Ventas.Repository;
 using Microsoft.OpenApi.Models;
 using System;
+using FabricaAutomotor.Microservicio.Ventas.Models.Request;
+using System.IO;
 
 namespace FabricaAutomotor.Microservicio.Ventas
 {
@@ -42,7 +44,7 @@ namespace FabricaAutomotor.Microservicio.Ventas
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -77,6 +79,12 @@ namespace FabricaAutomotor.Microservicio.Ventas
                         Url = new Uri("https://foo.com/"),
                     }
                 });
+
+                var XMLPath = AppDomain.CurrentDomain.BaseDirectory + nameof(Ventas) + ".xml";
+                if (File.Exists(XMLPath))
+                {
+                    options.IncludeXmlComments(XMLPath);
+                }
             });
         }
     }

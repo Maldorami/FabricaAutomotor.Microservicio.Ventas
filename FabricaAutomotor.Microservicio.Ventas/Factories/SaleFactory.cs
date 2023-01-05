@@ -1,5 +1,6 @@
 ﻿using System;
 using FabricaAutomotor.Microservicio.Ventas.Domain;
+using FabricaAutomotor.Microservicio.Ventas.Models;
 using FabricaAutomotor.Microservicio.Ventas.Models.Request;
 
 namespace FabricaAutomotor.Microservicio.Ventas.API.Factories

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FabricaAutomotor.Microservicio.Ventas.Domain
+namespace FabricaAutomotor.Microservicio.Ventas.Models
 {
     public class FeeData
     {

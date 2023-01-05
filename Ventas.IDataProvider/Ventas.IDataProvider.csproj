@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ventas.Domain\Ventas.Domain.csproj" />
+    <ProjectReference Include="..\Ventas.Models\Ventas.Models.csproj" />
   </ItemGroup>
 
 </Project>
