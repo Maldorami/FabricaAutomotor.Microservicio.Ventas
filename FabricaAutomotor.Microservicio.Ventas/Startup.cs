@@ -16,16 +16,34 @@ using Microsoft.Extensions.Logging;
 
 namespace FabricaAutomotor.Microservicio.Ventas
 {
+    /// <summary>
+    /// Startup class for FabricaAutomotor.Microservicio.Ventas microservice
+    /// </summary>
     public class Startup
     {
+        #region Constructor
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
+        #endregion
 
+        #region Properties
+        /// <summary>
+        /// Configuration
+        /// </summary>
         public IConfiguration Configuration { get; }
+        #endregion
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        #region Public Methods
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -37,7 +55,12 @@ namespace FabricaAutomotor.Microservicio.Ventas
             AddSwagger(services);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
+        /// <param name="loggerFactory"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
@@ -62,6 +85,7 @@ namespace FabricaAutomotor.Microservicio.Ventas
                 endpoints.MapControllers();
             });
 
+            // Initialize Logger Factory
             loggerFactory.AddLog4Net();
         }
         private void AddSwagger(IServiceCollection services)
@@ -70,6 +94,7 @@ namespace FabricaAutomotor.Microservicio.Ventas
             {
                 var groupName = "v1";
 
+                // Swagger configuration
                 options.SwaggerDoc(groupName, new OpenApiInfo
                 {
                     Title = $"Foo {groupName}",
@@ -90,5 +115,6 @@ namespace FabricaAutomotor.Microservicio.Ventas
                 }
             });
         }
+        #endregion
     }
 }

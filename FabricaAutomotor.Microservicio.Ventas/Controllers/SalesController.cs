@@ -17,20 +17,52 @@ using Newtonsoft.Json;
 
 namespace FabricaAutomotor.Microservicio.Ventas.Controllers
 {
-	[ApiController]
+    /// <summary>
+    /// Implements Sales controller class
+    /// </summary>
+    /// <remarks>
+    /// <list type="table">
+    /// <listheader>
+    ///     <term>Date</term>
+    ///     <term>Who</term>
+    ///     <description>Description</description>
+    /// </listheader>
+    ///  <item>
+    ///        <term>17/01/2023</term>
+    ///        <term>Ramiro Maldonado</term>
+    ///        <description>Initial implementation</description>
+    /// </item>
+    /// </list>
+    /// </remarks>
+    [ApiController]
 	[Route("[controller]")]
 	public class SalesController : ControllerBase
 	{
-
+        #region Members
         private ISaleService _saleService;
         private readonly ILogger _logger;
+        #endregion
 
+        #region Constructor
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="saleService"></param>
+        /// <param name="logger"></param>
         public SalesController(ISaleService saleService, ILogger<SalesController> logger)
         {
             _saleService = saleService;
             _logger = logger;
         }
+        #endregion
 
+        #region Public Methods
+
+        /// <summary>
+        /// Inserts new sales.
+        /// </summary>
+        /// <param name="saleRequest"></param>
+        /// <returns></returns>
         [HttpPost("InsertSale")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -74,6 +106,11 @@ namespace FabricaAutomotor.Microservicio.Ventas.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Randomly inserts X number of sales.
+        /// </summary>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [HttpGet("InsertRandomSales")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -125,6 +162,10 @@ namespace FabricaAutomotor.Microservicio.Ventas.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Shows the total amount of sales.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetTotalSalesCount")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -155,6 +196,11 @@ namespace FabricaAutomotor.Microservicio.Ventas.Controllers
             return Ok(saleCount);
         }
 
+        /// <summary>
+        /// Shows the total amount of sales by store.
+        /// </summary>
+        /// <param name="storeID"></param>
+        /// <returns></returns>
         [HttpGet("GetTotalSalesCountFromStore")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -191,6 +237,10 @@ namespace FabricaAutomotor.Microservicio.Ventas.Controllers
             return Ok(saleCount);
         }
 
+        /// <summary>
+        /// Shows the items sold impact of each store.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetItemSalePercentageByStore")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -219,5 +269,6 @@ namespace FabricaAutomotor.Microservicio.Ventas.Controllers
             }
             return Ok(JsonConvert.SerializeObject(saleCount));
         }
+        #endregion
     }
 }

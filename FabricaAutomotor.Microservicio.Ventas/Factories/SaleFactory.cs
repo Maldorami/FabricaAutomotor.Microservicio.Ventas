@@ -7,6 +7,11 @@ namespace FabricaAutomotor.Microservicio.Ventas.API.Factories
 {
     public class SaleFactory
     {
+        /// <summary>
+        /// Sales Factory.
+        /// </summary>
+        /// <param name="saleRequest"></param>
+        /// <returns></returns>
         public static SaleData CreateSaleDataFrom(SaleRequest saleRequest)
         {
             return new SaleData()
