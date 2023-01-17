@@ -111,56 +111,56 @@ namespace FabricaAutomotor.Microservicio.Ventas.Controllers
         /// </summary>
         /// <param name="count"></param>
         /// <returns></returns>
-        [HttpGet("InsertRandomSales")]
-        [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public IActionResult InsertRandomSales(int count)
-        {
-            var timer = Stopwatch.StartNew();
-            try
-            {
-                Random rnd = new Random();
+        //[HttpGet("InsertRandomSales")]
+        //[Consumes(MediaTypeNames.Application.Json)]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        //public IActionResult InsertRandomSales(int count)
+        //{
+        //    var timer = Stopwatch.StartNew();
+        //    try
+        //    {
+        //        Random rnd = new Random();
 
-                for (int i = 0; i < count; i++)
-                {
-                    var saleData = SaleFactory.CreateSaleDataFrom(new SaleRequest()
-                    {
-                        StoreID = rnd.Next(1, 5),
-                        ItemID = rnd.Next(1, 5)
-                    });
-                    _saleService.InsertSale(saleData);
-                }
-            }
-            catch (StoreNotExistsException e)
-            {
-                _logger.LogError(string.Format("{0} - {1} - {2}",
-                    System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
-                return NotFound(e.Message);
-            }
-            catch (ItemNotExistsException e)
-            {
-                _logger.LogError(string.Format("{0} - {1} - {2}",
-                    System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
-                return NotFound(e.Message);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(string.Format("{0} - {1} - {2}",
-                    System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
-                return BadRequest("Ocurrió un error. Contacte a un administrador.");
-            }
-            finally
-            {
-                timer.Stop();
-                _logger.LogInformation(string.Format("{0} - Time elapsed: {1}",
-                    System.Reflection.MethodBase.GetCurrentMethod().Name, timer.Elapsed), ControllerContext.ToString());
-            }
+        //        for (int i = 0; i < count; i++)
+        //        {
+        //            var saleData = SaleFactory.CreateSaleDataFrom(new SaleRequest()
+        //            {
+        //                StoreID = rnd.Next(1, 5),
+        //                ItemID = rnd.Next(1, 5)
+        //            });
+        //            _saleService.InsertSale(saleData);
+        //        }
+        //    }
+        //    catch (StoreNotExistsException e)
+        //    {
+        //        _logger.LogError(string.Format("{0} - {1} - {2}",
+        //            System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
+        //        return NotFound(e.Message);
+        //    }
+        //    catch (ItemNotExistsException e)
+        //    {
+        //        _logger.LogError(string.Format("{0} - {1} - {2}",
+        //            System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
+        //        return NotFound(e.Message);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        _logger.LogError(string.Format("{0} - {1} - {2}",
+        //            System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
+        //        return BadRequest("Ocurrió un error. Contacte a un administrador.");
+        //    }
+        //    finally
+        //    {
+        //        timer.Stop();
+        //        _logger.LogInformation(string.Format("{0} - Time elapsed: {1}",
+        //            System.Reflection.MethodBase.GetCurrentMethod().Name, timer.Elapsed), ControllerContext.ToString());
+        //    }
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
         /// <summary>
         /// Shows the total amount of sales.
@@ -201,7 +201,7 @@ namespace FabricaAutomotor.Microservicio.Ventas.Controllers
         /// </summary>
         /// <param name="storeID"></param>
         /// <returns></returns>
-        [HttpGet("GetTotalSalesCountFromStore")]
+        [HttpGet("GetTotalSalesCountFromStore/{storeID}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
