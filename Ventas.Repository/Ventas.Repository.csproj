@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationIcon></ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ventas.Domain\Ventas.Domain.csproj" />
+    <ProjectReference Include="..\Ventas.IDataProvider\Ventas.IDataProvider.csproj" />
+  </ItemGroup>
+
+</Project>
