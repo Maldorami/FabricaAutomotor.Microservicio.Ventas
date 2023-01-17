@@ -82,13 +82,13 @@ namespace FabricaAutomotor.Microservicio.Ventas.Controllers
             {
                 _logger.LogError(string.Format("{0} - {1} - {2}",
                     System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
-                return BadRequest(e.Message);
+                return NotFound(e.Message);
             }
             catch (ItemNotExistsException e)
             {
                 _logger.LogError(string.Format("{0} - {1} - {2}",
                     System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
-                return BadRequest(e.Message);
+                return NotFound(e.Message);
             }
             catch (Exception e)
             {
@@ -138,13 +138,13 @@ namespace FabricaAutomotor.Microservicio.Ventas.Controllers
             {
                 _logger.LogError(string.Format("{0} - {1} - {2}",
                     System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
-                return BadRequest(e.Message);
+                return NotFound(e.Message);
             }
             catch (ItemNotExistsException e)
             {
                 _logger.LogError(string.Format("{0} - {1} - {2}",
                     System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
-                return BadRequest(e.Message);
+                return NotFound(e.Message);
             }
             catch (Exception e)
             {
@@ -184,7 +184,7 @@ namespace FabricaAutomotor.Microservicio.Ventas.Controllers
             {
                 _logger.LogError(string.Format("{0} - {1} - {2}",
                     System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
-                return BadRequest("Ocurrió un error. Contacte a un administrador.");
+                return NotFound("Ocurrió un error. Contacte a un administrador.");
             }
             finally
             {
@@ -219,7 +219,7 @@ namespace FabricaAutomotor.Microservicio.Ventas.Controllers
             {
                 _logger.LogError(string.Format("{0} - {1} - {2}",
                     System.Reflection.MethodBase.GetCurrentMethod().Name, e.Message, e.StackTrace));
-                return BadRequest(e.Message);
+                return NotFound(e.Message);
             }
             catch (Exception e)
             {

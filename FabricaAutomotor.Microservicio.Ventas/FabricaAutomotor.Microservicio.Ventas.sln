@@ -5,15 +5,17 @@ VisualStudioVersion = 16.0.32630.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ventas.API", "Ventas.API.csproj", "{92CD7860-5611-4DCF-845A-131853D93B97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ventas.Models", "..\Ventas.Models\Ventas.Models.csproj", "{7573AD4B-4B0A-4EBB-BF31-98376DC69943}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ventas.Models", "..\Ventas.Models\Ventas.Models.csproj", "{7573AD4B-4B0A-4EBB-BF31-98376DC69943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ventas.Domain", "..\Ventas.Domain\Ventas.Domain.csproj", "{C01C64C6-94C8-4602-B080-74AF1A1BB379}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ventas.Domain", "..\Ventas.Domain\Ventas.Domain.csproj", "{C01C64C6-94C8-4602-B080-74AF1A1BB379}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ventas.IDataProvider", "..\Ventas.IDataProvider\Ventas.IDataProvider.csproj", "{4C5413B9-D8C2-4E15-BA3B-4D186482BC8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ventas.IDataProvider", "..\Ventas.IDataProvider\Ventas.IDataProvider.csproj", "{4C5413B9-D8C2-4E15-BA3B-4D186482BC8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ventas.DataProvider", "..\Ventas.DataProvider\Ventas.DataProvider.csproj", "{5B4EFF40-633D-4EDA-90D6-78551D92ADE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ventas.DataProvider", "..\Ventas.DataProvider\Ventas.DataProvider.csproj", "{5B4EFF40-633D-4EDA-90D6-78551D92ADE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ventas.Repository", "..\Ventas.Repository\Ventas.Repository.csproj", "{A9F2FE0B-7EF8-443E-89B8-1C0CCD2EB9CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ventas.Repository", "..\Ventas.Repository\Ventas.Repository.csproj", "{A9F2FE0B-7EF8-443E-89B8-1C0CCD2EB9CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ventas.API.Test", "..\Ventas.API.Test\Ventas.API.Test.csproj", "{CBFBFFF2-0F50-4268-9E8B-D2343C3244E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{A9F2FE0B-7EF8-443E-89B8-1C0CCD2EB9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9F2FE0B-7EF8-443E-89B8-1C0CCD2EB9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9F2FE0B-7EF8-443E-89B8-1C0CCD2EB9CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBFBFFF2-0F50-4268-9E8B-D2343C3244E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBFBFFF2-0F50-4268-9E8B-D2343C3244E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBFBFFF2-0F50-4268-9E8B-D2343C3244E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBFBFFF2-0F50-4268-9E8B-D2343C3244E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
