@@ -12,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using FabricaAutomotor.Microservicio.Ventas.Models.Request;
 using System.IO;
+using Microsoft.Extensions.Logging;
 
 namespace FabricaAutomotor.Microservicio.Ventas
 {
@@ -37,7 +38,7 @@ namespace FabricaAutomotor.Microservicio.Ventas
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -60,6 +61,8 @@ namespace FabricaAutomotor.Microservicio.Ventas
             {
                 endpoints.MapControllers();
             });
+
+            loggerFactory.AddLog4Net();
         }
         private void AddSwagger(IServiceCollection services)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using FabricaAutomotor.Microservicio.Ventas.Domain.Exceptions;
 using FabricaAutomotor.Microservicio.Ventas.Models;
 using FabricaAutomotor.Microservicio.Ventas.Models.Response;
 
@@ -52,6 +53,8 @@ namespace FabricaAutomotor.Microservicio.Ventas.DataProvider
         }
         public void InsertSale(SaleData saleData)
         {
+            if (!_storeDataList.Any(x => x.ID == saleData.StoreID)) throw new StoreNotExistsException(saleData.StoreID);
+            if (!_itemDataList.Any(x => x.ID == saleData.ItemID)) throw new ItemNotExistsException(saleData.ItemID);
             SaleDataList.Add(saleData);
         }
 
@@ -62,6 +65,8 @@ namespace FabricaAutomotor.Microservicio.Ventas.DataProvider
 
         public decimal GetTotalSalesCountFromStore(decimal storeID)
         {
+            if (!_storeDataList.Any(x => x.ID == storeID)) throw new StoreNotExistsException(storeID);
+
             return SaleDataList.Where(x => x.StoreID == storeID).Count();
         }
 
